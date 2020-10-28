@@ -1,0 +1,22 @@
+{
+  "name": "deletebot",
+  "version": "1.0.0",
+  "description": "Logs deleted discord messages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ling1729/deletebot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ling1729/deletebot/issues"
+  },
+  "homepage": "https://github.com/ling1729/deletebot#readme",
+  "dependencies": {
+    "eris": "^0.13.3"
+  }
+}
