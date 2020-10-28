@@ -3,7 +3,7 @@ const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 var bot = new Eris(DISCORD_TOKEN);
 
 bot.on("messageDelete", (message) => { // When a message is created
-  if(message.author.id == '346219582983372800')
+  if(message.author.id == '347128357122736128')
     bot.createMessage(message.channel.id, `julianne: ${message.content}`);
 });
 
