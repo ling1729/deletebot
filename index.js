@@ -15,7 +15,7 @@ bot.on("messageCreate", async function(message){
         file: buffer,
         name: message.attachments[0].filename
       };
-      messages[message.id] = {content: [message.cleanContent], file: attachment};
+      messages[message.id] = {content: [message.cleanContent.normalize("NFD").replace(/[\u0300-\u036f]/g, "")], file: attachment};
     }
   }
 })
@@ -28,17 +28,17 @@ bot.on("messageDelete", (message) => { // When a message is created
         allMessages += messages[message.id].content[i] + "\n";
       bot.createMessage(message.channel.id, `julianne: ${allMessages}`, messages[message.id].file);
     } else {
-      bot.createMessage(message.channel.id, `julianne: ${message.cleanContent}`);
+      bot.createMessage(message.channel.id, `julianne: ${message.cleanContent.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`);
     }
 });
 
 bot.on("messageUpdate", (message, oldMessage) => { // When a message is created
   if(message.author.id == user){
     if (message.id in messages)
-      messages[message.id].content.push(message.cleanContent);
+      messages[message.id].content.push(message.cleanContent.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
     else {
       messages[message.id] = {content: [oldMessage.content]};
-      messages[message.id].content.push(message.cleanContent);
+      messages[message.id].content.push(message.cleanContent.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
     }
   }
 });
