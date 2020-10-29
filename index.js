@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 var bot = new Eris(DISCORD_TOKEN);
-var user = '346219582983372800';
+var user = '347128357122736128';
 var messages = {};
 
 var postOnDelete = false;
