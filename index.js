@@ -3,7 +3,7 @@ const axios = require('axios');
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 var bot = new Eris(DISCORD_TOKEN);
-var user = '346219582983372800';
+var user = '347128357122736128';
 var messages = {};
 
 bot.on("messageCreate", async function(message){
@@ -28,9 +28,7 @@ bot.on("messageDelete", (message) => { // When a message is created
         allMessages += messages[message.id].content[i] + "\n";
       bot.createMessage(message.channel.id, `julianne: ${allMessages}`, messages[message.id].file);
     } else {
-      if(message.attachments.length != 0){
-        bot.createMessage(message.channel.id, `julianne: ${message.cleanContent}`);
-      }
+      bot.createMessage(message.channel.id, `julianne: ${message.cleanContent}`);
     }
 });
 
