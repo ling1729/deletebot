@@ -3,9 +3,10 @@ const axios = require('axios');
 
 const DISCORD_TOKEN = process.env.DISCORD_TOKEN;
 var bot = new Eris(DISCORD_TOKEN);
-var user = '347128357122736128';
+var user = '346219582983372800';
 var messages = {};
 
+var postOnDelete = false;
 bot.on("messageCreate", async function(message){
   if(message.author.id == user){
     if(message.attachments.length != 0){
@@ -34,12 +35,15 @@ bot.on("messageDelete", (message) => { // When a message is created
 
 bot.on("messageUpdate", (message, oldMessage) => { // When a message is created
   if(message.author.id == user){
-    if (message.id in messages)
-      messages[message.id].content.push(message.cleanContent.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
-    else {
-      messages[message.id] = {content: [oldMessage.content]};
-      messages[message.id].content.push(message.cleanContent.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
-    }
+    if(postOnDelete){
+      if (message.id in messages)
+        messages[message.id].content.push(message.cleanContent.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+      else {
+        messages[message.id] = {content: [oldMessage.content]};
+        messages[message.id].content.push(message.cleanContent.normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
+      }
+    } else
+        bot.createMessage(message.channel.id, `julianne: ${oldMessage.content.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`);
   }
 });
 
