@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ling1729/deletebot#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "eris": "^0.13.3"
   }
 }
